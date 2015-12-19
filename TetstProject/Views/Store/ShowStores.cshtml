@@ -1,0 +1,34 @@
+﻿@model TetstProject.ViewModel.ListStoreViewModel
+
+@{
+    ViewBag.Title = "ShowStores";
+}
+
+<h2>Список складов: </h2>
+
+<p>
+    @Html.ActionLink("Добавить новый склад", "AddStore","Store")
+</p>
+<table class="table">
+    <tr>
+        <th>Прав./Удалить</th>
+        <th>№</th>
+        <th>Название</th>
+    </tr>
+
+@foreach (var item in Model.Stores) {
+    <tr>
+        <td>
+            @Html.ActionLink("Править", "EditStore", "Store", new { @id = item.Id }, new { @class = "Edit" }) |
+            @Html.ActionLink("Удалить", "DeleteStore", "Store", new { @id = item.Id }, new { @class = "Del" })
+        </td>
+        <td>
+            @item.Id
+        </td>
+        <td>
+            @item.Name
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,42 @@
+﻿@model TetstProject.ViewModel.ListProductViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Список продуктов на всех складах.</h2>
+
+<p>
+    @Html.ActionLink("Добавить продукт", "AddProduct", "Product")
+</p>
+<table class="table">
+    <tr>
+        <th>Прав./Удаление</th>
+        <th>Код</th>
+        <th>Название</th>
+        <th>Цена</th>
+        <th>Склад</th>
+    </tr>
+
+@foreach (var item in Model.Products) {
+    <tr>
+        <td>
+            @Html.ActionLink("Править", "EditProduct", "Product" ,new { @id = item.Id }, new { @class = "Edit" }) |
+            @Html.ActionLink("Удалить", "DeleteProduct", "Product", new { @id = item.Id }, new { @class = "Del" })
+        </td>
+        <td>
+            @item.Code
+        </td>
+        <td>
+            @item.Name
+        </td>
+        <td>
+            @item.Price
+        </td>
+        <td>
+            @item.StoreName
+        </td>
+    </tr>
+}
+
+</table>

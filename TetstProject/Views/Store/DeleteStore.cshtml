@@ -1,0 +1,32 @@
+﻿@model TetstProject.ViewModel.StoreViewModel
+
+@{
+    ViewBag.Title = "DeleteStore";
+}
+
+<h2>Удаление склада.</h2>
+
+<h3>Вы хотите удалить "Cклад"?</h3>
+<div>
+    <h4>Скалад: </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Название:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ShowStores","Store")
+        </div>
+    }
+</div>
